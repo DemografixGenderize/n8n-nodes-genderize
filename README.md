@@ -1,8 +1,8 @@
 # @demografix/n8n-nodes-genderize
 
-This is an n8n community node. It lets you use _app/service name_ in your n8n workflows.
+This is an n8n community node. It lets you use Genderize.io in your n8n workflows.
 
-_App/service name_ is _one or two sentences describing the service this node integrates with_.
+Genderize.io is a gender prediction API that infers gender based on first names using statistical analysis. 
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
 
@@ -12,7 +12,6 @@ _App/service name_ is _one or two sentences describing the service this node int
 [Compatibility](#compatibility)
 [Usage](#usage)
 [Resources](#resources)
-[Version history](#version-history)
 
 ## Installation
 
@@ -20,27 +19,54 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Operations
 
-_List the operations supported by your node._
+- **Get Gender**: Predict the gender for a given first name with probability score
 
 ## Credentials
 
-_If users need to authenticate with the app/service, provide details here. You should include prerequisites (such as signing up with the service), available authentication methods, and how to set them up._
+### Free Tier (No Authentication Required)
+You can start using this node immediately without any credentials. The free tier provides:
+- **100 requests per day** per IP address
+- No signup required
+- No API key needed
+
+### Paid Tier (API Key Required)
+For higher request volumes, you can subscribe to a paid plan at [genderize.io](https://genderize.io) with various tier options for increased rate limits.
+
+**Setting up credentials:**
+1. Sign up at [genderize.io](https://genderize.io)
+2. Subscribe to a paid plan to receive your API key
+3. In n8n, create new "Genderize API" credentials
+4. Enter your API key
+5. Test the credentials to verify they work
 
 ## Compatibility
 
-_State the minimum n8n version, as well as which versions you test against. You can also include any known version incompatibility issues._
+This node is built using n8n's declarative style and requires n8n version 1.0 or later.
 
 ## Usage
 
-_This is an optional section. Use it to help users with any difficult or confusing aspects of the node._
+### Basic Example
+1. Add the "Genderize" node to your workflow
+2. Enter a first name (e.g., "Peter", "Sarah", "Alex")
+3. Execute the node
 
-_By the time users are looking for community nodes, they probably already know n8n basics. But if you expect new users, you can link to the [Try it out](https://docs.n8n.io/try-it-out/) documentation to help them get started._
+### Response Data
+The node returns the following data:
+- `name`: The name that was queried
+- `gender`: Predicted gender ("male", "female", or null)
+- `probability`: Confidence score (0-1, where 1 is 100% confident)
+- `count`: Number of data samples used for this prediction
+- `rateLimit.limit`: Total requests allowed in current period
+- `rateLimit.remaining`: Requests remaining in current period
+- `rateLimit.reset`: Unix timestamp when rate limit resets
+
+### Tips
+- Names with probability close to 0.5 indicate unisex names with less certainty
+- The API supports diacritics and non-Latin alphabets
+- Use the `rateLimit` data to monitor your API usage and avoid hitting limits
 
 ## Resources
 
-* [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
-* _Link to app/service documentation._
-
-## Version history
-
-_This is another optional section. If your node has multiple versions, include a short description of available versions and what changed, as well as any compatibility impact._
+- [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
+- [Genderize.io official website](https://genderize.io)
+- [Genderize.io API documentation](https://genderize.io/documentation)
