@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "n8n community node for Genderize.io API - predict gender based on first names with probability scores",
   "license": "MIT",
-  "homepage": "",
-  "keywords": ["n8n-community-node-package"],
+  "homepage": "https://github.com/DemografixGenderize/n8n-nodes-genderize#readme",
+  "keywords": ["n8n-community-node-package", "n8n", "genderize", "gender", "demographics", "api"],
   "author": { "name": "Demografix", "email": "info@genderize.io" },
   "repository": {
     "type": "git",
