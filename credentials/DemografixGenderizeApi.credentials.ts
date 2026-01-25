@@ -27,10 +27,10 @@ export class DemografixGenderizeApi implements ICredentialType {
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
-            qs: {
-                apikey: '={{$credentials.apiKey}}',
-            },
-        },
+			qs: {
+				apikey: '={{$credentials.apiKey}}',
+			},
+		},
 	};
 
 	test: ICredentialTestRequest = {

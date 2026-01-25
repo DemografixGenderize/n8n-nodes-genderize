@@ -4,7 +4,7 @@ export class DemografixGenderize implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Genderize',
 		name: 'demografixGenderize',
-		icon: { light: 'file:demografixGenderize.svg', dark: 'file:demografixGenderize.dark.svg' },
+		icon: 'file:demografixGenderize.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
