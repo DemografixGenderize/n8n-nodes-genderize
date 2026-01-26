@@ -41,6 +41,7 @@ export class DemografixGenderize implements INodeType {
 								url: '',
 								qs: {
 									name: '={{$parameter.name}}',
+									country_id: '={{$parameter.country_id || undefined}}',
 								},
 							},
 							output: {
@@ -66,6 +67,14 @@ export class DemografixGenderize implements INodeType {
 				required: true,
 				description: 'The first name to get gender prediction for',
 				placeholder: 'e.g., Peter',
+			},
+			{
+				displayName: 'Country Code',
+				name: 'country_id',
+				type: 'string',
+				default: '',
+				description: 'Optional ISO 3166-1 alpha-2 country code (e.g., US, GB, DK) for improved accuracy',
+				placeholder: 'e.g., US',
 			},
 		],
 	};
