@@ -8,14 +8,14 @@ export class DemografixGenderize implements INodeType {
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
-		description: 'Get gender prediction for a given name using the Genderize.io API (100 free requests/day without API key, more with subscription)',
+		description: 'Get gender prediction for a given name using the Genderize.io API (free tier: 2,500 requests/month)',
 		defaults: {
 			name: 'Genderize',
 		},
 		usableAsTool: true,
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
-		credentials: [{ name: 'demografixGenderizeApi', required: false }],
+		credentials: [{ name: 'demografixGenderizeApi', required: true }],
 		requestDefaults: {
 			baseURL: 'https://api.genderize.io',
 			headers: {
@@ -60,12 +60,12 @@ export class DemografixGenderize implements INodeType {
 				default: 'getGender',
 			},
 			{
-				displayName: 'First Name',
+				displayName: 'Name',
 				name: 'name',
 				type: 'string',
 				default: '',
 				required: true,
-				description: 'The first name to get gender prediction for',
+				description: 'The name to get gender prediction for',
 				placeholder: 'e.g., Peter',
 			},
 			{
